@@ -16,7 +16,7 @@ subscriptions model = Keyboard.presses constructKeyMsg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model = case msg of 
    Noop            -> ( model, Cmd.none )
-   NewSize size    -> requestShuffledModel size
+   NewSize size    -> ( unshuffledModel size, shuffleCmd size )
    KeyPressed dir  -> ( moveModel model dir, Cmd.none )
    RandomDirs dirs -> ( shuffleModel model dirs, Cmd.none )
 
