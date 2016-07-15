@@ -22,7 +22,9 @@ unshuffledModel : Int -> Model
 unshuffledModel size = Model size (solvedModelData size) (size-1)
 
 shuffleCmd : Int -> Cmd Msg
-shuffleCmd size = Random.generate constructRandomDirsMsg << Direction.arrowCodeGenerator <| Basics.min 2000 (20*size)
+shuffleCmd size =
+   let numShuffles = Basics.min 2000 (20*size) in
+   Random.generate constructRandomDirsMsg (Direction.arrowCodeGenerator numShuffles)
 
 
 displayWidth : Model -> Int
