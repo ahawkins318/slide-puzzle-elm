@@ -10,7 +10,7 @@ import Keyboard
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model = Keyboard.presses constructKeyMsg
+subscriptions model = Keyboard.downs constructKeyMsg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
